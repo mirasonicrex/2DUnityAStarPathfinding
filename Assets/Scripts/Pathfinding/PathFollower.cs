@@ -1,21 +1,22 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using NPCS.Schedule;
 using UnityEngine;
+using Grid = NPCS.Schedule.Grid;
 
-namespace NPCS.Schedule
+namespace Pathfinding
 {
     public class PathFollower : MonoBehaviour
     {
             private List<AStarPathfinding.Node> path;
             private int currentNodeIndex;
-            private float moveSpeed = .5f;
-            private float distanceThreshold = 0.1f;
-            [SerializeField] private Transform destination;
+            private float moveSpeed = .5f; // NPC move speed
+            private float distanceThreshold = 0.1f; 
+      
             private Pathfinder pathfinder;
             private Grid grid;
+            
+            [SerializeField] private Transform destination;
             private IEnumerator Start()
             {
                 
@@ -23,19 +24,16 @@ namespace NPCS.Schedule
                 yield return null;
 
                 grid = pathfinder.Grid;
-                Vector2 newTransform = grid.GetGridPosition(transform.position);
-                Vector2 newDest = grid.GetGridPosition(destination.position);
-                SetPath(pathfinder.FindPath(newTransform,newDest));
+                Vector2 startGridPos = grid.GetGridPosition(transform.position);
+                Vector2 endGridPos = grid.GetGridPosition(destination.position);
+                SetPath(pathfinder.FindPath(startGridPos,endGridPos));
 
 
             }
-
-
-
-
+            
             public void SetPath(List<AStarPathfinding.Node> p)
             {
-                //Debug.Log(p.StringFromStringBuilder());
+  
                 path = p;
                 currentNodeIndex = 0;
             }

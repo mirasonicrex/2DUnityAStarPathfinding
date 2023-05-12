@@ -8,48 +8,47 @@ namespace Pathfinding
     public class CreateGrid : MonoBehaviour
     {
         [SerializeField] private GameObject tilePrefab;
-
-        [SerializeField]
-        private float cellSize = 0.64f; // change according to cell size
         public Grid Grid { get; private set; }
-        [field:SerializeField] public int Width { get; private set; }
-        [field:SerializeField]  public int Height { get; private set; }
-        [field: SerializeField] public Vector2 gridCenter;
+
+        [SerializeField] public int width = 100;
+        [SerializeField] public int height = 100;
+
+        [SerializeField] public TileData pathTileData;
+        [SerializeField] public Tilemap pathTileMap;
+        [SerializeField] public Vector2 gridCenter;
+        [SerializeField] public float cellSize = 0.64f; 
         private void Awake()
         {
-            Width = 10; 
-            Height = 10;
-            Grid = new Grid(Width, Height, cellSize, tilePrefab, gridCenter);
+            Grid = new Grid(width, height, cellSize, tilePrefab, pathTileData, pathTileMap, gridCenter);
         }
 
-        
-        // For Debugging purposes
+        // For Debugging
         private void OnDrawGizmos()
         {
             if (Grid != null)
             {
-                for (int x = 0; x < Width; x++)
+                for (int x = 0; x < width; x++)
                 {
-                    for (int y = 0; y < Height; y++)
+                    for (int y = 0; y < height; y++)
                     {
-                        if(!Grid.GridArray[x,y].node.IsWalkable)
+                        if(!Grid.GridArray[x,y].Node.IsWalkable)
                         {
                    
                             Gizmos.color = Color.red;
                      
-                            Gizmos.DrawWireCube(Grid.GridArray[x,y].node.Position, new Vector3(0.2f, 0.2f, 0));
+                            Gizmos.DrawWireCube(Grid.GridArray[x,y].Node.Position, new Vector3(0.2f, 0.2f, 0));
                         }
-                        else if (Grid.GridArray[x, y].node.Walkability < 0.8f)
+                        else if (Grid.GridArray[x, y].Node.Walkability < 0.8f)
                         {
                             Gizmos.color = Color.black;
                      
-                            Gizmos.DrawWireCube(Grid.GridArray[x,y].node.Position, new Vector3(0.2f,0.2f, 0));
+                            Gizmos.DrawWireCube(Grid.GridArray[x,y].Node.Position, new Vector3(0.2f,0.2f, 0));
                         }
                         else
                         {
                             Gizmos.color = Color.blue;
                   
-                            Gizmos.DrawWireCube(Grid.GridArray[x,y].node.Position, new Vector3(0.2f, 0.2f, 0));
+                            Gizmos.DrawWireCube(Grid.GridArray[x,y].Node.Position, new Vector3(0.2f, 0.2f, 0));
                         }
                     
                     }

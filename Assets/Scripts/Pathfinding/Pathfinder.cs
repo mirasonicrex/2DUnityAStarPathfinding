@@ -1,25 +1,23 @@
 using System.Collections.Generic;
-using Pathfinding;
+using NPCS.Schedule;
 using UnityEngine;
+using Grid = NPCS.Schedule.Grid;
 
-namespace NPCS.Schedule
+namespace Pathfinding
 {
     public class Pathfinder : MonoBehaviour
     {
   
-        // For NPC's to call the pathfinding algorithm 
+        // For NPCs to call the pathfinding algorithm 
         public Grid Grid { get; private set; }
         private AStarPathfinding aStar;
 
         private void Start()
         {
-            // Need to make the grid instances separate 
-            
+
             Grid = FindObjectOfType<CreateGrid>().Grid;
             
             aStar = new AStarPathfinding(Grid);
-            
-            
 
         }
 
