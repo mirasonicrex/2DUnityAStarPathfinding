@@ -42,14 +42,11 @@ namespace Pathfinding
             {
                 if (path == null)
                 {
-                    Debug.Log("Path was null");
                     return;
                 }
 
                 if (currentNodeIndex >= path.Count)
                 {
-                   Debug.Log($"Reached end of path : {currentNodeIndex} ");
-             
                     // Reached the end of the path
                     return;
                 }
