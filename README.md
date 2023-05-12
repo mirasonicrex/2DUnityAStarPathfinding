@@ -1,6 +1,6 @@
 # 2DUnityAStarPathfinding
 
-This is an implementation of the A* Pathfinding algorithm in Unity using a grid-based system. The algorithm finds the shortest path between two points on the grid, while taking into account the walkability of the cells, as well as any additional weights assigned to the cells.
+This is an implementation of the A* Pathfinding algorithm in Unity using a grid-based system. The algorithm finds the shortest path between two points on the grid, while taking into account the walkability of the cells, as well as any additional weights assigned to the cells. Made over on https://www.twitch.tv/mirasonicrex with the help of chat! 
 
 *** This algorithm is a work in progress and will be updated over time. Currently, there is no optimization for the node lists, which could lead to longer processing times and less efficient pathfinding. Future updates may include improvements to the data structures used and enhancements to the core algorithm, resulting in faster and more accurate pathfinding.
 
