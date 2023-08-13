@@ -85,17 +85,17 @@ namespace NPCS.Schedule
         private Vector2 GetCellPosition( int x, int y)
         {
             
-            Vector2 newPos = (bottomLeftPosition + new Vector2(x * CellSize, y * CellSize) )+ new Vector2(centerPosition.x * CellSize, centerPosition.y * CellSize);
+            Vector2 newPos = (bottomLeftPosition + new Vector2(x * CellSize, y * CellSize) )
+                             + new Vector2(centerPosition.x * CellSize, centerPosition.y * CellSize);
             return newPos;
 
         }
-
         public Vector2 GetGridPosition(Vector2 worldPosition)
         { 
            // Subtract centerPosition from worldPosition to account for the grid's center position
            Vector2 adjustedWorldPosition = worldPosition -  new Vector2(centerPosition.x * CellSize, centerPosition.y * CellSize);
-           int gridIndexX = Mathf.FloorToInt(adjustedWorldPosition.x / CellSize + (Width - 1) / 2f);
-           int gridIndexY = Mathf.FloorToInt(adjustedWorldPosition.y / CellSize + (Height - 1) / 2f);
+           int gridIndexX = Mathf.FloorToInt(adjustedWorldPosition.x / CellSize + (Width) / 2f);
+           int gridIndexY = Mathf.FloorToInt(adjustedWorldPosition.y / CellSize + (Height) / 2f);
            Vector2 gridPosition = new Vector2(gridIndexX, gridIndexY);
     
            return gridPosition;
@@ -107,7 +107,7 @@ namespace NPCS.Schedule
             int gridIndexY = Mathf.FloorToInt(nodePosition.y / CellSize - HalfCellSize);
             Vector3Int convertedGridPos = new Vector3Int((int)gridIndexX, (int)gridIndexY, 0);
             // Need a list of tile base that holds a reference to all the path tiles
-            return GetTileBase(convertedGridPos) ? Random.Range(0.3f, 0.8f) : 1f;
+            return GetTileBase(convertedGridPos) ? 0.02f : 1f;
         }
 
         private bool GetTileBase(Vector3Int gridPos)

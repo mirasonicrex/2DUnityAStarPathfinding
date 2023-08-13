@@ -13,7 +13,6 @@ namespace Pathfinding
             public int HCost { get; set; }
             public int FCost { get; set; }
             public Node Parent { get; set; }
-
             public bool IsWalkable { get; set; }
             public float Walkability { get; set; }
         
@@ -196,10 +195,10 @@ namespace Pathfinding
             if (y > 0) neighbors.Add(grid.GridArray[x, y - 1].Node);
             if (y < mapHeight - 1) neighbors.Add(grid.GridArray[x, y + 1].Node);
             // Check diagonal (optional) 
-            if (x > 0 && y > 0) neighbors.Add(grid.GridArray[x - 1, y - 1].Node);
-            if (x < mapWidth - 1 && y > 0) neighbors.Add(grid.GridArray[x + 1, y - 1].Node);
-            if (x > 0 && y < mapHeight - 1) neighbors.Add(grid.GridArray[x - 1, y + 1].Node);
-            if (x < mapWidth - 1 && y < mapHeight - 1) neighbors.Add(grid.GridArray[x + 1, y + 1].Node);
+            // if (x > 0 && y > 0) neighbors.Add(grid.GridArray[x - 1, y - 1].Node);
+            // if (x < mapWidth - 1 && y > 0) neighbors.Add(grid.GridArray[x + 1, y - 1].Node);
+            // if (x > 0 && y < mapHeight - 1) neighbors.Add(grid.GridArray[x - 1, y + 1].Node);
+            // if (x < mapWidth - 1 && y < mapHeight - 1) neighbors.Add(grid.GridArray[x + 1, y + 1].Node);
             return neighbors;
         }
 
